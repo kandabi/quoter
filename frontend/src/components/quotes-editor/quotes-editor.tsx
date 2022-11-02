@@ -43,9 +43,19 @@ const QuotesEditor = ({ editQuote, onQuoteCreate, onQuoteEdit }: QuoteEditorProp
    return (
       <div className='quotes-editor'>
          <label>Author</label>
-         <input onChange={handleAuthorChange} placeholder='Author' value={quote.author} type='text' />
+         <input
+            onChange={handleAuthorChange}
+            placeholder='Famous Author'
+            value={quote.author}
+            type='text'
+         />
          <label>Title</label>
-         <textarea onChange={handleTitleChange} placeholder='Title' value={quote.title} rows={4} />
+         <textarea
+            placeholder='Enter your quote here...'
+            onChange={handleTitleChange}
+            value={quote.title}
+            rows={4}
+         />
          <button onClick={handleButtonClick}>{editQuote ? 'Edit' : 'Submit'}</button>
       </div>
    );
