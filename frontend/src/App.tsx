@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import './App.scss';
 import { IQuote } from './components/quote/quote';
 import { QuoteList } from './components/quote-list';
 import { QuotesApi } from './api/quotes-api';
@@ -15,7 +16,8 @@ const App = () => {
 
    const getQuotes = () => QuotesApi.get().then((data) => setQuotes(data));
 
-   const handleQuoteCreateSubmit = (quote: IQuote) => QuotesApi.create(quote).then(() => getQuotes());
+   const handleQuoteCreateSubmit = (quote: IQuote) =>
+      QuotesApi.create(quote).then(() => getQuotes());
    const handleQuoteEditSubmit = (quote: IQuote) => {
       QuotesApi.update(quote).then(() => getQuotes());
       setEditQuote(undefined);
