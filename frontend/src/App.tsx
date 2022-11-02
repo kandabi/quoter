@@ -1,29 +1,28 @@
 import { useEffect, useState } from 'react';
 
-import './App.scss';
+import './app.scss';
 import { IQuote } from './components/quote/quote';
 import { QuoteList } from './components/quote-list';
 import { QuotesApi } from './api/quotes-api';
 import { QuotesEditor } from './components/quotes-editor';
 
 const App = () => {
-   const [quotes, setQuotes] = useState<IQuote[]>([]);
    const [editQuote, setEditQuote] = useState<IQuote>();
+   const [quotes, setQuotes] = useState<IQuote[]>([]);
 
    useEffect(() => {
-      getQuotes();
+      fetchQuotes();
    }, []);
 
-   const getQuotes = () => QuotesApi.get().then((data) => setQuotes(data));
+   const fetchQuotes = () => QuotesApi.get().then((data) => setQuotes(data));
 
-   const handleQuoteCreateSubmit = (quote: IQuote) =>
-      QuotesApi.create(quote).then(() => getQuotes());
+   const handleQuoteCreateSubmit = (quote: IQuote) => QuotesApi.create(quote).then(fetchQuotes);
    const handleQuoteEditSubmit = (quote: IQuote) => {
-      QuotesApi.update(quote).then(() => getQuotes());
+      QuotesApi.update(quote).then(fetchQuotes);
       setEditQuote(undefined);
    };
 
-   const handleQuoteDeleteClick = (id: number) => QuotesApi.delete(id).then(() => getQuotes());
+   const handleQuoteDeleteClick = (id: number) => QuotesApi.delete(id).then(fetchQuotes);
    const handleQuoteEditClick = (quote: IQuote) => setEditQuote(quote);
 
    return (
