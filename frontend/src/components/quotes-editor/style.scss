@@ -1,0 +1,13 @@
+
+
+.quotes-editor {
+  flex-direction: column;
+  display: flex;
+  width: 30%;
+  gap: 6px;
+
+  button { 
+    margin-top: 20px;
+    width: 100px;
+  }
+}

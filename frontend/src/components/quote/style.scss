@@ -1,0 +1,24 @@
+.quote {
+   justify-content: start;
+   display: flex;
+
+   &.hover .icon {
+      display: block;
+   }
+
+   .icon {
+      cursor: pointer;
+      padding: 0 5px;
+      min-width: 16px;
+      width: 16px;
+      display: none;
+
+      &.exit {
+         margin-left: auto;
+      }
+
+      img {
+         width: 100%;
+      }
+   }
+}
